@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 //Cargar la configuración de la BD
-const CONFIGDB = require('../config/bd.config');
+const CONFIGDB = require('../config/db.config');
 //objeto que contiene la conexión a la bd
 const URL = `mongodb://${CONFIGDB.SERVER}:${CONFIGDB.PORT}`;
 
@@ -12,7 +12,7 @@ module.exports = {
 		try {
 			await CLIENT.connect();
 			console.log('Se ha establecido conexión al servidor de MONGO');
-			database = cliente.db(CONFIGDB.DATABASE);
+			database = CLIENT.db(CONFIGDB.DATABASE);
 		} catch (error) {
 			console.log(error);
 		}
