@@ -151,7 +151,7 @@ function listInfo(data) {
 
 function formatDate(date) {
 	temp_date = new Date(date);
-	return temp_date.toDateString();
+	return temp_date.toJSON().substring(0, 10);
 }
 
 module.exports = DATE;
