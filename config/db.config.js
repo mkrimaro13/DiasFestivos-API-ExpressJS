@@ -1,5 +1,5 @@
 module.exports = {
-	SERVER: 'localhost',
+	SERVER: 'bdfestivos',
 	PORT: '27017',
 	DATABASE: 'festivos',
 	USER: '',
