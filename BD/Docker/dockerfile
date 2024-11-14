@@ -1,0 +1,6 @@
+# Se usa la última imagen de MongoDB
+FROM mongo:latest
+
+# Se copia el script para crear los registros de la BD
+# en el directorio de inicio del contenedor
+COPY iniciarbdfestivos.js /docker-entrypoint-initdb.d/

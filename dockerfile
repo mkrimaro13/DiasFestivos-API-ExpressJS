@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 # Instalar dependencias 
 # Se usa un comodín para garantizar que ambos package.json Y package-lock.json sean copiados 
 COPY package*.json ./ 
-RUN npm install 
+RUN npm install
 # Si se está construyendo para ambiente de producción 
 # RUN npm ci --only=production 
 # copiar el código fuente de la aplicación completo 
