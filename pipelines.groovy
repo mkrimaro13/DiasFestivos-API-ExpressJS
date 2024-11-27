@@ -2,9 +2,9 @@ pipeline {
     agent any
     environment {
         REPO_URL =
-'https://github.com/mkrimaro13/SoftwareEmpresarial-DivisionPoliticaAPI.git'
+'https://github.com/mkrimaro13/DiasFestivos-API-ExpressJS.git'
         BRANCH = 'jenkins' // Cambia esto si usas otra rama
-        DOCKER_NETWORK = 'redapifestivos'
+        DOCKER_NETWORK = 'redfestivoscalendario'
         DOCKER_IMAGE = 'apifestivos:latest'
         DOCKER_CONTAINER = 'apifestivos'
     }
@@ -12,6 +12,13 @@ pipeline {
         stage('Clonar Repositorio') {
             steps {
                 git branch: "${BRANCH}", credentialsId: '100', url: "${REPO_URL}"
+            }
+        }
+        stage('Verificar si existe la red y crearla si es necesario') {
+            steps {
+                script {
+                    bat 'docker network list --filter "name=%DOCKER_NETWORK%" | findstr . && docker network remove %DOCKER_NETWORK%  && docker network create %DOCKER_NETWORK% || echo No hay red'
+                }
             }
         }
         stage('Construir Imagen Docker') {
